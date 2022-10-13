@@ -8,8 +8,7 @@ int main ()
   int segredo, chute, entrada, entrada1, i=0, max=100, min=0;
   srand (time (0));
   chute = (rand () % max) + 1;
-  printf ("Pense em um valor entre 0 e 100.\n");
-  printf("Instruções:\nEscreva ' 0 ' caso o chute do programa esteja certo.");
+  printf("Instruções:\nPense em um valor entre 0 e 100.\n\nEscreva ' 0 ' caso o chute do programa esteja certo.");
   printf("\nEscreva ' 1 ' caso o chute esteja abaixo do valor pensado. \nEscreva ' 2 ' caso o chute esteja acima.\n\t");
   printf("\nPara começar, digite 0: ");
   scanf("%d", &entrada1);
