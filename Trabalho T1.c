@@ -1,3 +1,7 @@
+/*
+Inácio Camargo Buemo 
+Turma: SI1 2022-2
+*/
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
