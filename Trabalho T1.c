@@ -41,7 +41,7 @@ int main ()
        
     }while(entrada1==0 && entrada!=0);
       
-  printf("\nO programa acertou seu número em %d tentativas!", i);
+  printf("\nO programa acertou seu número em %d tentativas!\n", i);
   
   return 0;
 }
