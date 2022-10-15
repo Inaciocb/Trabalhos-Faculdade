@@ -5,10 +5,12 @@ Turma: SI1 2022-2
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <locale.h>
 
 int main ()
 {
  
+  setlocale(LC_ALL, "portuguese");
   int segredo, chute, entrada, entrada1, i=0, max=0, min=0;
   srand (time (0));
   printf("O jogo terá qual valor máximo?\nDigite: ");
