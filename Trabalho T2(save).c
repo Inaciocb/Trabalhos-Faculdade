@@ -22,8 +22,7 @@ Passo 4. Imprimir qual intervalo tem menos primos.
 #include <stdio.h>
 #include <stdbool.h>
 
-bool
-verifprimo (int num)
+bool verifprimo (int num)
 {
   int i = 1, cont = 0;
   for (i = 1; i <= num; i++)
@@ -43,8 +42,7 @@ verifprimo (int num)
     }
 }
 
-void
-PrimosIntervalo (int min, int max)
+void PrimosIntervalo (int min, int max)
 {
   int i = min;
   printf ("\nOs primos no intervalo de %d e %d sC#o:\n\n", min, max);
@@ -59,8 +57,7 @@ PrimosIntervalo (int min, int max)
   printf ("\n");
 }
 
-int
-contaprimos (int min, int max)
+int contaprimos (int min, int max)
 {
   int i = min, contador = 0;
 
@@ -76,8 +73,7 @@ contaprimos (int min, int max)
 
 
 
-int
-main ()
+int main ()
 {
 
   int numint, i = 0, j = 0;
