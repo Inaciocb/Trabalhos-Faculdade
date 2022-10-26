@@ -50,18 +50,15 @@ int contaprimos(int min, int max)
 	return contador;
 }
 
-
-
 int main()
 {
 	
-	int numint, i=0, j=0;
+	int numint, i=0, j=0, menor, intervalo;
 	do
 	{ 
 	
 		printf("Informe o número de intervalos a serem considerados: ");
 		scanf("%d", &numint);
-	
 		if(numint<0)
 		{
 			printf("Informe um número válido.\n");
@@ -69,7 +66,8 @@ int main()
   
 	}while(numint<0);
 
-	int v[(numint*2)-1];
+	int qtdprimos[numint*2-1];
+    int intervalos[(numint*2)-1];
 	int contador=0;
 
 	printf("\nAgora, informe os mínimos e máximos para cada intervalo:\n\n");
@@ -79,11 +77,11 @@ int main()
 	for(contador==0; contador < numint; contador++)
 		{
 			printf("\nValor mínimo do intervalo %d: ", contador+1);
-			scanf("%d", &v[i]);
+			scanf("%d", &intervalos[i]);
 			printf("\nValor máximo do intervalo %d: ", contador+1);
-			scanf("%d", &v[(i+1)]);
+			scanf("%d", &intervalos[(i+1)]);
 		
-			if(v[i] >= v[(i+1)])
+			if(intervalos[i] >= intervalos[(i+1)])
 			{
 				printf("\nInforme um intervalo válido.\n");
 				i--;
@@ -91,38 +89,34 @@ int main()
 			
 			i=i+2;
 		}
-	
-	int qtdprimos[numint], menorqtd; //numero do intervalo 1;
-	
-	for(j=0; j<=numint;j++)
-	{    
-		qtdprimos[j] = contaprimos(v[i], v[i+1]);
-		i += 2;
-	}
-	//procura o intervalo com menos primos.
-	
-	menorqtd = qtdprimos[j], j=0, i=0, contador=0;
-	for(j=0; j<=numint; j++)
-	{
-		if(qtdprimos[j] < qtdprimos[j+1])
-		{
-			menorqtd = qtdprimos[j];
-			contador = j;
-		}
-		i+=2;
-	}
-
-	//informa qual tem menos primos
-	printf("\nA menor quantidade de primos é %d e está no intervalo %d (%d até %d)", menorqtd, contador+1, v[contador], v[+1]);
-   
-	//Pega os intervalos e informa quantos primos há em cada.
-	i = 0, j=0; 
+    i = 0, j=0; 
 	for(j == 0; j < numint; j++)
 	{
-		PrimosIntervalo(v[i], v[i+1]);
+		PrimosIntervalo(intervalos[i], intervalos[i+1]);
 		i = i + 2;
 	}
-	j=0, i=0;
+    //Essa parte do programa atribui as quantidades de primos de cada intervalo aos seus respectivos valores.
+    j=0;
+    for(j=0; j<numint; j++)
+    {
+        qtdprimos[j] = contaprimos(intervalos[j], intervalos[j+1]);
+    }
+	//Essa parte procura o intervalo com a menor quantidade de primos e armazena (qual o intervalo) na variável 'menor'
+   j=0, menor = qtdprimos[j];
+    for( j=0; j <= numint+1; j++)
+    {
+            if(qtdprimos[j] < menor)
+            {
+                menor = qtdprimos[j];
+                intervalo = j+1;
+            }    
+    }
+
+    printf("\n\nA menor quantidade de primos está no intervalo %d (de %d até %d) que "
+           "tem %d primos\n",  intervalo-2, intervalos[intervalo-1], intervalos[intervalo], menor);
+
   
 	return 0;
 }
+
+
