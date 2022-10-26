@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+//verifica se o número(num) é primo
 bool verifprimo(int num)
 {
 	int i = 1, cont = 0;
@@ -21,6 +22,7 @@ bool verifprimo(int num)
 	}
 }
 
+// essa função imprime os primos do intervalo "min-max".
 void PrimosIntervalo(int min, int max)
 {
 	int i = min;
@@ -67,7 +69,7 @@ int main()
 	}while(numint<0);
 
 	int qtdprimos[numint*2-1];
-    int intervalos[(numint*2)-1];
+        int intervalos[(numint*2)-1];
 	int contador=0;
 
 	printf("\nAgora, informe os mínimos e máximos para cada intervalo:\n\n");
@@ -96,7 +98,7 @@ int main()
 		i = i + 2;
 	}
    
-    //Essa parte do programa atribui as quantidades de primos de cada intervalo aos seus respectivos valores.
+//Essa parte do programa atribui as quantidades de primos de cada intervalo aos seus respectivos valores.
 	j=0;
 	for(j = 0; j < numint; j++)
 	{
