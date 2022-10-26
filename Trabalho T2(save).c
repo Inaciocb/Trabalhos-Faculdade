@@ -123,8 +123,8 @@ int main()
     //procura o intervalo com menos primos.
     
     menorqtd = qtdprimos[j], j=0, i=0, contador=0;
-    for(j=0; j<=numint; j++)
-    {
+for(j=0; j<=numint; j++)
+{
         if(qtdprimos[j] < qtdprimos[j+1])
         {
             menorqtd = qtdprimos[j];
