@@ -51,6 +51,7 @@ void PrimosIntervalo(int min, int max)
 	printf("\n");
 }
 
+//faz basicamente tudo (declaração de variáveis, verifica qual intervalo tem a menor quantidade de primos, etc...).
 void Intervalos()
 {
     int i = 0, numint, tamint, min, max, menor;
