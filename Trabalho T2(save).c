@@ -1,3 +1,8 @@
+/*
+	Aluno: Inácio Camargo Buemo 
+	Turma: SI 1 
+	Lab 1 2022/2;
+*/
 #include <stdio.h>
 #include <stdbool.h>
 
