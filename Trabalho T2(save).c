@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-//verifica se o número(num) é primo
 bool verifprimo(int num)
 {
 	int i = 1, cont = 0;
@@ -22,7 +21,21 @@ bool verifprimo(int num)
 	}
 }
 
-// essa função imprime os primos do intervalo "min-max".
+//printf("%d", contaprimos(4, 20));
+int contaprimos(int min, int max)
+{
+	int i = min, contador = 0;
+	
+	for (i = min; i <= max; i++)
+	{
+		if (verifprimo(i) == true)
+		{
+			contador++;
+		}
+	}
+	return contador;
+}
+
 void PrimosIntervalo(int min, int max)
 {
 	int i = min;
@@ -38,89 +51,47 @@ void PrimosIntervalo(int min, int max)
 	printf("\n");
 }
 
-int contaprimos(int min, int max)
+void Intervalos()
 {
-	int i = min, contador = 0;
-	
-	for (i = min; i <= max; i++)
-	{
-		if (verifprimo(i) == true)
-		{
-			contador++;
-		}
-	}
-	return contador;
+    int i = 0, numint, tamint, min, max, menor;
+    
+    do
+    {
+        printf("Informe qual será a quantidade de intervalos: ");
+        scanf("%d", &numint);
+        printf("\nInforme qual será o tamanho desses intervalos: ");
+        scanf("%d", &tamint);
+        menor = contaprimos(i, tamint+i-1);
+        if(numint<=0 || tamint <=0)
+        {
+            printf("\n\n* Informe intervalos válidos! *\n\n");
+        }
+    }while(numint<=0 || tamint <=0);
+        for(i=1; i < (tamint * numint); i += tamint)
+        {
+            PrimosIntervalo(i, i+tamint-1);
+            if(contaprimos(i, i+tamint-1)< menor)
+            {
+                menor = contaprimos(i, i+tamint-1), min = i, max = i+tamint-1;
+            }
+        }i=0;
+   
+    printf("\n\nO intervalo com menos primos é de %d até %d, ", min, max);
+   
+    if(menor>1)
+    {
+        printf("que tem %d primos.\n", menor);
+    }else if(menor==0)
+    {
+        printf("que não tem primos.\n");
+    }else
+    {
+        printf("que tem %d primo.\n", menor);
+    }
 }
 
 int main()
 {
-	
-	int numint, i=0, j=0, menor, intervalo;
-	do
-	{ 
-	
-		printf("Informe o número de intervalos a serem considerados: ");
-		scanf("%d", &numint);
-		if(numint<0)
-		{
-			printf("Informe um número válido.\n");
-		}
-  
-	}while(numint<0);
-
-	int qtdprimos[numint*2-1];
-        int intervalos[(numint*2)-1];
-	int contador=0;
-
-	printf("\nAgora, informe os mínimos e máximos para cada intervalo:\n\n");
-
-	
-	//pede os intervalos
-	for(contador = 0; contador < numint; contador++)
-	{
-		printf("\nValor mínimo do intervalo %d: ", contador+1);
-		scanf("%d", &intervalos[i]);
-		printf("\nValor máximo do intervalo %d: ", contador+1);
-		scanf("%d", &intervalos[(i+1)]);
-		
-		if(intervalos[i] >= intervalos[(i+1)])
-		{
-			printf("\nInforme um intervalo válido.\n");
-			i--;
-		}
-		i=i+2;
-	}
-    
-	i = 0, j=0; 
-	for(j = 0; j < numint; j++)
-	{
-		PrimosIntervalo(intervalos[i], intervalos[i+1]);
-		i = i + 2;
-	}
-   
-//Essa parte do programa atribui as quantidades de primos de cada intervalo aos seus respectivos valores.
-	j=0;
-	for(j = 0; j < numint; j++)
-	{
-    	qtdprimos[j] = contaprimos(intervalos[j], intervalos[j+1]);
-	}
-	
-//Essa parte procura o intervalo com a menor quantidade de primos e armazena (qual o intervalo) na variável 'menor'
-	j=0, menor = qtdprimos[j];
-	for( j=0; j <= numint+1; j++)
-	{
-    	if(qtdprimos[j] < menor)
-    	{
-    		menor = qtdprimos[j];
-        	intervalo = j+1;
-		}    
-	}
-
-	printf("\n\nA menor quantidade de primos está no intervalo %d (de %d até %d) que "
-       "tem %d primos\n",  intervalo-2, intervalos[intervalo-1], intervalos[intervalo], menor);
-
-  
+    Intervalos();
 	return 0;
 }
-
-
