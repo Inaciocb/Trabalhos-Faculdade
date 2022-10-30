@@ -68,7 +68,7 @@ void Intervalos()
         menor = contaprimos(i, tamint+i-1);
         if(numint<=0 || tamint <=0)
         {
-            printf("\n\n* Informe intervalos válidos! *\n\n");
+            printf("\n\n Informe intervalos válidos! \n\n");
         }
     }while(numint<=0 || tamint <=0);
         for(i=1; i < (tamint * numint); i += tamint)
