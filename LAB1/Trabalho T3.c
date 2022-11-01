@@ -43,9 +43,10 @@ double ExpoenteFracionario(double base, double valor)
     int i = 2;
     double j;
     
-    //esse laço while verifica a menor fração (em alguns casos com numerador e denomiador maiores que 10)
-    //que resulta no número não inteiro recebido pelo parâmetro 'valor'.
+    //esse laço while verifica a fração equivalente
+    //ao número não inteiro recebido pelo parâmetro 'valor'.
     //fazendo isso, é possivel calcular a partir do logaritmo o resultado de uma base elevada
+    //ao expoente fracionário. 
     //ao expoente fracionário. 
     while(fmod(j, 10) != 0)
     {
