@@ -39,7 +39,8 @@ int main()
 double ExpoenteFracionario(double base, double valor)
 {
     
-    int i = 0, j;
+    int i = 2; 
+    double j = valor;
     
     //esse laço while verifica a menor fração (em alguns casos com numerador e denomiador maiores que 10)
     //que resulta no número não inteiro recebido pelo parâmetro 'valor'.
@@ -65,5 +66,5 @@ double ExpoenteFracionario(double base, double valor)
     }  
     
     // retorna o valor base^(j/i), por meio da aplicação das propriedades dos logaritmos.
-    return pow(i, (j/i)*(log(base)/log(i)));
+    return XnaY(i, (j/i)*(log(base)/log(i)));
 }
