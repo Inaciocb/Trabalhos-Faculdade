@@ -29,7 +29,8 @@ double XnaY (double x, double y)
 
 int main()
 {
-    printf("%lf", XnaY(9, 1/2));
+    double x=243, y = 1.0/5.0;
+    printf("%lf", XnaY(x, y));
     return 0;
 }
 
@@ -39,8 +40,8 @@ int main()
 double ExpoenteFracionario(double base, double valor)
 {
     
-    int i = 2; 
-    double j = valor;
+    int i = 2;
+    double j;
     
     //esse laço while verifica a menor fração (em alguns casos com numerador e denomiador maiores que 10)
     //que resulta no número não inteiro recebido pelo parâmetro 'valor'.
@@ -66,5 +67,5 @@ double ExpoenteFracionario(double base, double valor)
     }  
     
     // retorna o valor base^(j/i), por meio da aplicação das propriedades dos logaritmos.
-    return XnaY(i, (j/i)*(log(base)/log(i)));
+    return pow(i, (j/i)*(log(base)/log(i)));
 }
