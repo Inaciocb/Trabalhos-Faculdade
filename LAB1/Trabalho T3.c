@@ -10,44 +10,71 @@ bool verificaInteiro(double x)
 
 double XnaY (double x, double y)
 {
-    double resultado;
-    int i=1;
+    double resultado = x;
+    int i = 1;
     
     if(verificaInteiro(y) == true)
     {
-        for(i=1; i<= y; i++)
+        if(y > 0)
         {
-            resultado = (x*x);
+            for(i = 1; i < y; i++)
+            {
+                resultado *= x;
+            }
         }
-    }else
+        else if(y < 0)
+        {
+            y *= (-1);
+            for(i = 1; i < y; i++)
+            {
+                resultado *= x;
+            }
+            resultado = 1/resultado;
+        }
+        else if(y == 0)
+        {
+            resultado = 1;
+        }
+    }
+    else
     {
         double ExpoenteFracionario();
-        resultado = ExpoenteFracionario(x, y);
+        if(y > 0)
+        {
+            resultado = ExpoenteFracionario(x, y);
+        }else
+        {
+            resultado = (1)/(ExpoenteFracionario(x, y));
+        }
     }
+    
     return resultado;
 }
 
 int main()
 {
-    double x=243, y = 1.0/5.0;
-    printf("%lf", XnaY(x, y));
+    double x = 2, y = -0.5;
+    printf("%lf\n\n", pow(x, y));
     return 0;
 }
 
-//nessa função que calcula caso o expoente seja fracionário, 
-//o 'j' equivale ao denominador do expoente (radical) e 'i' equivale ao nominador
-//do expoente fracionário. 
+/*
+nessa função que calcula caso o expoente seja fracionário, 
+o 'j' equivale ao denominador do expoente (radical) e 'i' equivale 
+ao nominador do expoente fracionário. 
+*/
 double ExpoenteFracionario(double base, double valor)
 {
     
     int i = 2;
     double j;
     
-    //esse laço while verifica a fração equivalente
-    //ao número não inteiro recebido pelo parâmetro 'valor'.
-    //fazendo isso, é possivel calcular a partir do logaritmo o resultado de uma base elevada
-    //ao expoente fracionário. 
-    //ao expoente fracionário. 
+    /* 
+    esse laço while verifica a fração que resulta no número
+    não-inteiro recebido pelo parâmetro 'valor'. Fazendo isso, é possivel 
+    calcular a partir do logaritmo o resultado de uma base elevada
+    ao expoente fracionário. 
+    */
     while(fmod(j, 10) != 0)
     {
         j = valor * i;
@@ -68,5 +95,5 @@ double ExpoenteFracionario(double base, double valor)
     }  
     
     // retorna o valor base^(j/i), por meio da aplicação das propriedades dos logaritmos.
-    return pow(i, (j/i)*(log(base)/log(i)));
+    return XnaY(i, (j/i)*(log(base)/log(i)));
 }
