@@ -94,5 +94,5 @@ double ExpoenteFracionario(double base, double valor)
         i = i/10;
     }  
     // retorna o valor base^(j/i), por meio da aplicação das propriedades dos logaritmos.
-    return XnaY(i, (j/i)*(log(base)/log(i)));
+    return XnaY(i, (j/i) * (log(base)/log(i)));
 }
