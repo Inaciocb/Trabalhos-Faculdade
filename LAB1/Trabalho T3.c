@@ -1,5 +1,6 @@
 /*
-Nome do aluno: Inácio
+Nome do aluno: Inácio Camargo Buemo
+Turma
 */
 #include <stdio.h>
 #include <math.h>
