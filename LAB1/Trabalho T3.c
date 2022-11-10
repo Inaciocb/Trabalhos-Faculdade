@@ -1,6 +1,6 @@
 /*
 Nome do aluno: Inácio Camargo Buemo
-Turma
+Turma SI1
 */
 #include <stdio.h>
 #include <math.h>
