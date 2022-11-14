@@ -16,7 +16,7 @@ int main ()
 {
   setlocale(LC_ALL, "portuguese");
   
-  int segredo, chute, entrada, entrada1, i=0, max=0, min=0;
+  int chute, entrada, entrada1, i=0, max=0, min=0;
   
   srand (time (0));
   
