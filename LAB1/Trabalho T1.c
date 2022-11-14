@@ -32,7 +32,7 @@ int main ()
     do
     {
         i++;
-        chute = (rand () % (max+1-min))+min;
+        chute = (rand () % ((max+1)-min))+min;
         printf("\nChute do programa: %d\n", chute);
         printf("\nEstá certo?\n0 = Sim\n1 = Está abaixo.\n2 = Está acima.\n Digite: ");
         scanf("%d", &entrada);
