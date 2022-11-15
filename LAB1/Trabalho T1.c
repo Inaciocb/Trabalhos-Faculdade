@@ -61,7 +61,7 @@ int main ()
         if(max == min || min > max)
         {
             frescurinha();
-            printf(" \tVocê trapaceou:\n   O seu número não pode ser advinhado!!\n\t\ >:(");
+            printf(" \tVocê trapaceou:\n   O seu número não pode ser advinhado!!\n\t >:(");
             frescurinha();
             break;
         }
