@@ -12,11 +12,12 @@ int qual_maior(int tam, int v[tam])
     }
 }
 
-void preenche_vetor(int tam, int v[tam])
+void preenche_vetor(int tam, long int v[tam])
 {
-    for(int i = 0; i< 21; i++)
+    for(int i = 21; i >= 0; i--)
     {
-        v[i] = (rand()%27)+1; 
+        printf("População de %d a %d: ");
+        scanf("%d", &v[i]);
     }
 }
 
@@ -24,31 +25,43 @@ int main()
 {
     srand(time(0));
     long int homens[21], mulheres[21], maiorH;
-   
+    
+    printf("Informe os valores da população masculina:\n\n");
     preenche_vetor(21, homens);
+    
+    printf("Informe os valores da população feminina:\n\n");
     preenche_vetor(21, mulheres);
 
     for(int i = 0; i < 21; i++)
     {
         for(int j=0; j < 74; j++)
         {
-            if(j == 37 && i>0)
-                printf("%d", 100 - (5*i));
-            else if(j == 37)
-            printf("++");
-            
-            if(j < 36 && j >= 35 - homens[i])
+            if(j == 36 && i > 0 )
             {
-                printf("x");
+                if(i > 18)
+                    printf(".");
+                printf("%d", 100 - (5*i));
+                
+            }else 
+            if(j == 36 && i == 0)
+            {
+                printf("++");
             }
+            if(j < 35 && j >= 35 - homens[i])
+                printf("x");
+            else if(j > 36 && j <= 74 - mulheres[i])
+                printf("x");    
             else
             {
-                printf(" ");
+                printf(".");
             }
+
+
+            
 
         }
         printf("\n");
     }
-
+    printf("\n\n%d e %d\n\n%d\n%d\n", mulheres[2], homens[2], homens[10], homens[1]);
     return 0;
 }
