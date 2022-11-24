@@ -12,56 +12,73 @@ int qual_maior(int tam, int v[tam])
     }
 }
 
+
 void preenche_vetor(int tam, long int v[tam])
 {
-    for(int i = 21; i >= 0; i--)
+    int j = 1;
+    for(int i = 20; i >= 0; i--)
     {
-        printf("População de %d a %d: ");
+        printf("População de %d a %d: ", (j-1)*5, j*5);
         scanf("%d", &v[i]);
+        j++;
     }
 }
 
+void desenha_piramide(int t, long int homens[t], long int mulheres[t])
+{
+    int i = 0, j = 0;
+    
+    for(i = 0; i < 21; i++)
+    {
+        
+        for(j = 0; j < 39 - homens[i]; j++)
+        {     
+            printf(".");
+        }
+        for(j = 0; j < homens[i]; j++)
+        {
+            printf("x");
+        }
+        if(i == 0)
+            printf(" ++ ");
+        else
+        {
+            if(i > 18)
+                printf(" ");
+            printf(" %d ", 100 - (5*i));
+        }
+        for(j = 0; j < mulheres[i]; j++)
+        {
+            printf("x");
+        }
+        for(j = 0; j < 39 - mulheres[i]; j++)
+        {
+            printf(".");
+        }
+        printf("\n");
+    }
+}
 int main()
 {
     srand(time(0));
     long int homens[21], mulheres[21], maiorH;
+    int j=0, i=0;
     
-    printf("Informe os valores da população masculina:\n\n");
+    printf("Informe os valores da população masculina:\n");
     preenche_vetor(21, homens);
     
-    printf("Informe os valores da população feminina:\n\n");
+    printf("Informe os valores da população feminina:\n");
     preenche_vetor(21, mulheres);
-
-    for(int i = 0; i < 21; i++)
+    
+    /*
+    for(int m=0; m<21; m++)
     {
-        for(int j=0; j < 74; j++)
-        {
-            if(j == 36 && i > 0 )
-            {
-                if(i > 18)
-                    printf(".");
-                printf("%d", 100 - (5*i));
-                
-            }else 
-            if(j == 36 && i == 0)
-            {
-                printf("++");
-            }
-            if(j < 35 && j >= 35 - homens[i])
-                printf("x");
-            else if(j > 36 && j <= 74 - mulheres[i])
-                printf("x");    
-            else
-            {
-                printf(".");
-            }
-
-
-            
-
-        }
-        printf("\n");
+        homens[m] = m+1;
+        mulheres[m] = m+1;
     }
-    printf("\n\n%d e %d\n\n%d\n%d\n", mulheres[2], homens[2], homens[10], homens[1]);
+    */
+    desenha_piramide(21, homens, mulheres);
+
     return 0;
 }
+
