@@ -42,8 +42,6 @@ void desenha_piramide(int t, float homens[t], float mulheres[t])
         }
         for(j = 0; j < homens[i]/8; j+= 0.125)
         {
-            cor_fundo(10,5,200);
-
             cor_texto(10, 5, 200);
             printf("▏");
             cor_normal();
@@ -61,7 +59,6 @@ void desenha_piramide(int t, float homens[t], float mulheres[t])
         }
         for(j = 0; j < mulheres[i]/8; j+= 0.125)
         {
-            cor_fundo(200,10,100);
             cor_texto(200,10,100);
             printf("▏");
             cor_normal();
