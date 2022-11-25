@@ -48,7 +48,7 @@ void desenha_piramide(int t, float homens[t], float mulheres[t])
         }
         if(i == 20)
         {
-            printf(" ++ ");
+            printf(" ++  ");
             cor_normal();
         }       
         else
