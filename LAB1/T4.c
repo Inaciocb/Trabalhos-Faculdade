@@ -33,7 +33,6 @@ int qual_maior(int tam, float v[tam])
 void desenha_piramide(int t, float homens[t], float mulheres[t], float somaH, float somaM)
 {
     printf("\n\n");
-    
     for(i = 20; i >= 0; i--)     
     {     
         for(j = 0; j < 39 - homens[i]; j++)
@@ -79,8 +78,6 @@ void desenha_piramide(int t, float homens[t], float mulheres[t], float somaH, fl
     cor_normal();
     printf("\n");
 }
-
-
 
 int main()
 {
