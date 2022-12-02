@@ -70,11 +70,11 @@ void desenha_piramide(int t, float homens[t], float mulheres[t], float somaH, fl
     }
     printf("\n    ");
     cor_fundo(255, 255, 255);
-    printf("♂ População masculina total: %.0fmi\t", somaH); 
+    printf("♂ População masculina total: %.0f\t", somaH); 
     cor_normal();
     printf("    ");
     cor_fundo(255, 255, 255);
-    printf("♀ População feminina total: %.0fmi", somaM);
+    printf("♀ População feminina total: %.0f", somaM);
     cor_normal();
     printf("\n");
 }
