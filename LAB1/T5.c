@@ -26,7 +26,6 @@ for (int i = 0; i < tam; i++)
     cores[i] = cor; // adiciona a cor sorteada à lista de cores geradas
     numCoresSorteadas++;
 }
-
 }
 
 int main()
@@ -36,7 +35,7 @@ int contador;
 
 sorteia_cores(4, coresSorteadas);
 
-printf("%s \n", coresSorteadas);
+printf("%s\n", coresSorteadas);
 do
 {
     printf("Digite sua jogada: ");
@@ -48,10 +47,9 @@ do
             contador++;
     }
     printf("Voce acertou uma sequencia de %d letras\n", contador);
-} while(strcmp(coresSorteadas, jogada) != 0);
+} while(contador != 4);
 
-printf("Parabens, voce acertou a sequencia!\n");
+printf("Parabens, voce acertou a sequência!\n");
 
 return 0;
-
 }
