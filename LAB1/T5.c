@@ -56,7 +56,7 @@ void jogadas(char coresSorteadas[4], char jogada[4])
         }
         if(contador < 4)
         {
-            printf("Voce acertou uma sequencia de %d letras\n", contador);
+            printf("\nVocê acertou uma sequência de %d letras\n", contador);
             contador = 0;
         }
         numJogadas++;
@@ -64,9 +64,9 @@ void jogadas(char coresSorteadas[4], char jogada[4])
     } while(contador != 4 && numJogadas < 10);
     
     if (contador == 4)
-        printf("Parabens, voce acertou a sequência!\n");
+        printf("Parabéns, você acertou a sequência!\n");
     else
-        printf("Infelizmente, voce esgotou suas tentativas sem acertar a sequência.\n");
+        printf("Você esgotou suas tentativas sem acertar a sequência.\n");
 }
 
 int main()
