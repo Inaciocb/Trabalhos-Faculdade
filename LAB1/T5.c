@@ -36,7 +36,7 @@ void sorteia_cores(char cores[4])
            cores[i] = cor; 
            numCoresSorteadas++;
        }
-   } while (verifica_repeticao(coresSorteadas) == true);
+   }while (verifica_repeticao(coresSorteadas) == true);
 }
 
 void jogadas(char coresSorteadas[4], char jogada[4])
