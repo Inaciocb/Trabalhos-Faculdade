@@ -14,6 +14,9 @@
 #define P 255, 60, 120
 #define V 160, 60, 255
 
+#define W 255, 255 ,255
+#define BL 0, 0 , 0
+
 int i = 0, j = 0;
 
 void coresjogadas(char cor)
@@ -42,18 +45,32 @@ void cor_normal(void)
 
 void cores_tutorial()
 {
-    for(i = 0; i < 3; i++)
-    {
-        
-    }
+    imprime_bloco_cor('Y', Y);
+    imprime_bloco_cor('O', O);
+    imprime_bloco_cor('R', R);
+    imprime_bloco_cor('G', G);
+    imprime_bloco_cor('B', B);
+    imprime_bloco_cor('P', P);
+    imprime_bloco_cor('V', V);
 }
+
+void imprime_bloco_cor(char cor, int r, int g, int b)
+{
+    cor_fundo(r, g, b);
+    printf("     ");
+    cor_texto(BL);
+    printf("%c", cor);
+    cor_normal();
+}
+
+
 void tutorial()
 {
     cor_fundo(50 , 30 , 210);
     cor_texto(0 , 0 , 0);
     printf("BEM-VINDO AO MINDMASTER!");
     cor_normal();
-    cor_fundo(15, 200 , 40);
+    cor_fundo(W);
     printf("\n\n\tTUTORIAL:\n\nPara ganhar o jogo, você deve acertar a sequência aleatória de cores\ngerada pelo "
            "computador.\nVocê tem 9 tentativas, ao máximo, para vencer.\nAs cores possíveis para a sequência são as "
            "seguintes:\n\n");
