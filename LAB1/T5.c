@@ -187,5 +187,6 @@ int main()
     char coresSorteadas[nCORES], jogada[nCORES]; 
     sorteia_cores(coresSorteadas);
     jogadas(coresSorteadas, jogada);
+    
     return 0;
 }
