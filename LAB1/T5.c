@@ -224,6 +224,6 @@ int main()
         printf("\n\nQuer continuar jogando?\n\n1 para sim, 0 para não: ");
         scanf("%d", &querJogar);
     }while(querJogar == 1);
-    printf("Obrigado por jogar! :)")
+    printf("Obrigado por jogar! :)\n")
     return 0;
 }
