@@ -19,6 +19,8 @@
 
 int i = 0, j = 0;
 
+
+
 void coresjogadas(char cor)
 {
     int r, g, b;
@@ -43,26 +45,60 @@ void cor_normal(void)
     printf("\e[m");
 }
 
+void cor_fundo1(char cor)
+{
+    switch(cor)
+    {
+        case 'Y':
+            cor_fundo(Y);
+            break;
+        case 'O':
+            cor_fundo(O);
+            break;
+        case 'R':
+            cor_fundo(R);
+            break;
+        case 'G':
+            cor_fundo(G);
+            break;
+        case 'B':
+            cor_fundo(B);
+            break;
+        case 'P':
+            cor_fundo(P);
+            break;
+        case 'V':
+            cor_fundo(V);
+            break;
+        default:
+            cor_fundo(W);
+            break;
+    }
+}
+
+
 void cores_tutorial()
 {
-    imprime_bloco_cor('Y', Y);
-    imprime_bloco_cor('O', O);
-    imprime_bloco_cor('R', R);
-    imprime_bloco_cor('G', G);
-    imprime_bloco_cor('B', B);
-    imprime_bloco_cor('P', P);
-    imprime_bloco_cor('V', V);
+    int linha = 0;
+    char cor[7] = {'Y', 'O', 'R', 'G', 'B', 'P', 'V'};
+    
+    for(linha = 0; linha < 3; linha++)
+    {
+        for(i = 0; i < 7; i++)
+        {
+            cor_fundo1(cor[i]);
+            if(linha != 1)
+                printf("   ");
+            else 
+                printf(" %c ", cor[i]);
+            cor_normal();
+            printf(" ");
+            cor_normal();
+        }
+        printf("\n");
+    }
+    printf(" ");
 }
-
-void imprime_bloco_cor(char cor, int r, int g, int b)
-{
-    cor_fundo(r, g, b);
-    printf("     ");
-    cor_texto(BL);
-    printf("%c", cor);
-    cor_normal();
-}
-
 
 void tutorial()
 {
@@ -71,14 +107,14 @@ void tutorial()
     printf("BEM-VINDO AO MINDMASTER!");
     cor_normal();
     cor_fundo(W);
-    printf("\n\n\tTUTORIAL:\n\nPara ganhar o jogo, você deve acertar a sequência aleatória de cores\ngerada pelo "
+    printf("\n\n\tTUTORIAL:\n\nPara ganhar o jogo, você deve acertar a sequência aleatória de cores gerada pelo "
            "computador.\nVocê tem 9 tentativas, ao máximo, para vencer.\nAs cores possíveis para a sequência são as "
            "seguintes:\n\n");
     cor_normal();
     cores_tutorial();
     cor_normal();
-
 }
+
 
 bool verifica_repeticao(char coresSorteadas[nCORES])
 {
@@ -172,21 +208,22 @@ void jogadas(char coresSorteadas[nCORES], char jogada[nCORES])
 {
     int contador = 0, numJogadas = 0;
     printf("%s\n", coresSorteadas);
-    do
-    {
-        faz_jogada(jogada);
-        resultado(contador, jogada, coresSorteadas);
-        numJogadas++;
-    }while(contador != 4 && numJogadas < 10);
+    faz_jogada(jogada);
     resultado(contador, jogada, coresSorteadas);
 }
 
 int main()
 {
+    int querJogar = 1;
     tutorial();
     char coresSorteadas[nCORES], jogada[nCORES]; 
-    sorteia_cores(coresSorteadas);
-    jogadas(coresSorteadas, jogada);
-    
+    do
+    {
+        sorteia_cores(coresSorteadas);
+        jogadas(coresSorteadas, jogada);
+        printf("\n\nQuer continuar jogando?\n\n1 para sim, 0 para não: ");
+        scanf("%d", &querJogar);
+    }while(querJogar == 1);
+    printf("Obrigado por jogar! :)")
     return 0;
 }
