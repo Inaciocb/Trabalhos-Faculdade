@@ -9,7 +9,7 @@
 #define nTENTATIVAS 9
 
 #define Y 255, 210, 45
-#define O 200, 100, 100
+#define O 255, 165, 0
 #define R 255, 50, 0  
 #define G 30, 255, 20
 #define B 30, 40, 255
@@ -163,10 +163,24 @@ void printa_jogadas(char *coresJogadas, int acertos, int quase)
         cor_normal();
         printf(" ");
     }
-    for()
+    for(i = 0; i < acertos; i++)
+    {
+        cor_fundo(BL);
+        printf("  ");
+        cor_normal();
+        printf(" ");
+    }
+    for(i = 0; i < quase; i++)
+    {
+        cor_fundo(W);
+        printf("  ");
+        cor_normal();
+        printf(" ");
+    }
+    printf("\n");
 }
 
-bool partida(int *tentativas, char *coresSorteadas)
+bool partida(int *tentativas, char *coresSorteadas, int *vitorias, int *derrotas)
 {
     char coresJogadas[nCORES];
     int tentativaAtual = 0;
@@ -174,7 +188,7 @@ bool partida(int *tentativas, char *coresSorteadas)
 
     for (tentativaAtual = 0; tentativaAtual < nTENTATIVAS; tentativaAtual++)
     {
-        acertos = 0;
+        acertos = 0, quase = 0;
         printf("\nTentativa %d/%d\n", tentativaAtual + 1, nTENTATIVAS);
         for (i = 0; i < nCORES; i++)
         {
@@ -208,13 +222,14 @@ bool partida(int *tentativas, char *coresSorteadas)
 
         if (acertos == nCORES)
         {
-            printf("\nParabéns! Você ganhou!\n");
             return true;
+            *vitorias++;
         }
         else
         {
             *tentativas += *tentativas;
             printa_jogadas(coresJogadas, acertos, quase);
+            *derrotas++;
         }
     }
     printf("\nVocê perdeu! A sequência era: ");
@@ -237,11 +252,11 @@ void jogo(int *vitorias, int *derrotas)
     printf("\n%s\n", coresSorteadas);
 
     
-    if(partida(&tentativas, coresSorteadas) == true)
+    if(partida(&tentativas, coresSorteadas, &vitorias, &derrotas) == true)
     {
         printf("\n\n\n");
         cor_fundo(G);
-        printf("Você venceu!");
+        printf("Você venceu em %d tentativas!", tentativas);
         cor_normal();
         printf("\n\n");
         *vitorias++;
@@ -250,7 +265,7 @@ void jogo(int *vitorias, int *derrotas)
     {
         printf("\n\n\n");
         cor_fundo(R);
-        printf("Você perdeu!");
+        printf("Você perdeu! (esgotou suas 9 tentativas)");
         cor_normal();
         printf("\n\n");
         *derrotas++;
@@ -262,7 +277,7 @@ void jogo(int *vitorias, int *derrotas)
 bool querJogar()
 {
     char resposta;
-    printf("\nDeseja jogar novamente? (S/n): ");
+    printf("\nDeseja jogar novamente? (S/N): ");
     scanf(" %c", &resposta);
     switch(resposta)
     {
