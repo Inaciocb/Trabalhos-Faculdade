@@ -121,13 +121,17 @@ void tutorial()
 {
     cor_fundo(50 , 30 , 210);
     cor_texto(0 , 0 , 0);
-    printf("BEM-VINDO AO MINDMASTER!");
+    printf("BEM-VINDO AO MASTERMIND!");
     cor_normal();
     cor_fundo(W);
     printf("\n\n\tTUTORIAL:\n\nPara ganhar o jogo, você deve acertar a sequência aleatória de cores gerada pelo "
-           "computador.\nVocê tem 9 tentativas, ao máximo, para vencer.\nAs cores possíveis para a sequência são as "
-           "seguintes:\n\n");
+           "computador.\nSe você acertar uma cor na posição correta, você verá um quadrado preto ao lado das suas jogadas,\n"
+           "se você acertar uma cor na posição errada, você verá um quadrado branco ao lado das suas jogadas."
+           "\nSe você não acertar nenhuma cor, não aparecerá nada ao lado das suas jogadas.\n\n"
+           "\nVocê tem 9 tentativas, ao máximo, para vencer.\nAs cores possíveis para a sequência são as "
+           "seguintes:");
     cor_normal();
+    printf("\n\n");
     cores_tutorial();
     cor_normal();
 }
@@ -180,7 +184,7 @@ void printa_jogadas(char *coresJogadas, int acertos, int quase)
     printf("\n");
 }
 
-bool partida(int *tentativas, char *coresSorteadas, int *vitorias, int *derrotas)
+bool partida(char *coresSorteadas)
 {
     char coresJogadas[nCORES];
     int tentativaAtual = 0;
@@ -222,17 +226,23 @@ bool partida(int *tentativas, char *coresSorteadas, int *vitorias, int *derrotas
 
         if (acertos == nCORES)
         {
+            printf("\n\n\n");
+            cor_fundo(G);
+            printf("Você venceu em %d tentativas!!", tentativaAtual + 1);
+            cor_normal();
+            printf("\n\n");
             return true;
-            *vitorias++;
         }
         else
         {
-            *tentativas += *tentativas;
             printa_jogadas(coresJogadas, acertos, quase);
-            *derrotas++;
         }
     }
-    printf("\nVocê perdeu! A sequência era: ");
+    printf("\n\n\n");
+    cor_fundo(R);
+    printf("Você perdeu! (esgotou suas 9 tentativas)\nA sequência correta era:");
+    cor_normal();
+    printf("\n\n");
     for (i = 0; i < nCORES; i++)
     {
         cor_fundo1(coresSorteadas[i]);
@@ -243,41 +253,28 @@ bool partida(int *tentativas, char *coresSorteadas, int *vitorias, int *derrotas
     return false;
 }
 
-void jogo(int *vitorias, int *derrotas)
+int jogo()
 {
     int tentativas = 0, rodadas = 0, pontos = 0;
     char coresSorteadas[nCORES], coresJogadas[nCORES];
     
     sorteia_cores(coresSorteadas);
-    printf("\n%s\n", coresSorteadas);
-
-    
-    if(partida(&tentativas, coresSorteadas, &vitorias, &derrotas) == true)
+    printf("\n%s\n", coresSorteadas); 
+    if(partida(coresSorteadas))
     {
-        printf("\n\n\n");
-        cor_fundo(G);
-        printf("Você venceu em %d tentativas!", tentativas+1);
-        cor_normal();
-        printf("\n\n");
-        *vitorias++;
+        pontos += 1000;
     }
     else
     {
-        printf("\n\n\n");
-        cor_fundo(R);
-        printf("Você perdeu! (esgotou suas 9 tentativas)");
-        cor_normal();
-        printf("\n\n");
-        *derrotas++;
+        pontos -= 1000;
     }
-    
-    
+    return pontos;
 }
 
 bool querJogar()
 {
     char resposta;
-    printf("\nDeseja jogar novamente? (S/N): ");
+    printf("\nDeseja jogar uma partida? (S/N): ");
     scanf(" %c", &resposta);
     switch(resposta)
     {
@@ -293,23 +290,18 @@ bool querJogar()
     }
 }
 
-void status(int *vitorias, int *derrotas)
-{
-    printf("\n\nVocê venceu %d partidas e perdeu %d.\n", *vitorias, *derrotas);
-}
+
 
 int main()
 {
-    int *vitorias = 0, *derrotas = 0;
+    int pontos = 0;
     tutorial();
     do
     {
-        jogo(&vitorias, &derrotas);   
+        pontos += jogo();
+        printf("\n\nPontuação: %d\n", pontos);
     }while(querJogar());
     
-    status(&vitorias, &derrotas);
-    printf("\n\nObrigado por jogar!\n");
-
-    
+    printf("\n-------------------\nObrigado por jogar!\n-------------------\n");
     return 0; 
 }
