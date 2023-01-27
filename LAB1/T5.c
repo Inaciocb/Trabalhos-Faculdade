@@ -77,13 +77,17 @@ void cores_tutorial()
         {
             cor_fundo1(cor[i]);
             if(linha != 1)
+            {
                 printf("     ");
-            else 
+                
+            }else 
+            {
                 printf("  %c  ", cor[i]);
-            cor_normal();
+            }cor_normal();
             printf(" ");
             cor_normal();
         }
+        cor_normal();
         printf("\n");
     }
     printf(" ");
@@ -150,11 +154,23 @@ void sorteia_cores(char *coresSorteadas)
     }
 }
 
+void printa_jogadas(char *coresJogadas, int acertos, int quase)
+{
+    for(i = 0; i < nCORES; i++)
+    {
+        cor_fundo1(coresJogadas[i]);
+        printf("  ");
+        cor_normal();
+        printf(" ");
+    }
+    for()
+}
+
 bool partida(int *tentativas, char *coresSorteadas)
 {
     char coresJogadas[nCORES];
     int tentativaAtual = 0;
-    int acertos = 0;
+    int acertos = 0, quase = 0;
 
     for (tentativaAtual = 0; tentativaAtual < nTENTATIVAS; tentativaAtual++)
     {
@@ -166,7 +182,7 @@ bool partida(int *tentativas, char *coresSorteadas)
             scanf(" %c", &coresJogadas[i]);
             coresJogadas[i] = converte_minusculas(coresJogadas[i]);
         }
-
+        
         for (i = 0; i < nCORES; i++)
         {
             if (coresJogadas[i] == coresSorteadas[i])
@@ -174,6 +190,22 @@ bool partida(int *tentativas, char *coresSorteadas)
                 acertos++;
             }
         }
+
+        for(i = 0; i < nCORES; i++)
+        {
+            for(j = 0; j < nCORES; j++)
+            {
+                if(coresJogadas[i] == coresSorteadas[j])
+                {
+                    if(i != j)
+                   {
+                        quase++;
+                        break;
+                   }
+                }
+            }
+        }
+
         if (acertos == nCORES)
         {
             printf("\nParabéns! Você ganhou!\n");
@@ -181,8 +213,8 @@ bool partida(int *tentativas, char *coresSorteadas)
         }
         else
         {
-            *tentativas = *tentativas + 1;
-            printf("\nVocê acertou %d cores.\n", acertos);
+            *tentativas += *tentativas;
+            printa_jogadas(coresJogadas, acertos, quase);
         }
     }
     printf("\nVocê perdeu! A sequência era: ");
