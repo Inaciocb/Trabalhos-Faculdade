@@ -256,7 +256,7 @@ void jogo(int *vitorias, int *derrotas)
     {
         printf("\n\n\n");
         cor_fundo(G);
-        printf("Você venceu em %d tentativas!", tentativas);
+        printf("Você venceu em %d tentativas!", tentativas+1);
         cor_normal();
         printf("\n\n");
         *vitorias++;
